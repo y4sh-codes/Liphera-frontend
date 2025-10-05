@@ -80,7 +80,7 @@ export default function DocumentationPage() {
             className="flex items-center gap-4 mb-8"
           >
             <Link href="/">
-              <Button variant="outline" className="glass-effect text-white hover:bg-white/20 border-white/30">
+              <Button variant="outline" className="glass-button text-white border-white/30">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Home
               </Button>
@@ -118,8 +118,8 @@ export default function DocumentationPage() {
                 onClick={() => setActiveSection(section.id)}
                 className={`${
                   activeSection === section.id 
-                    ? 'btn-gradient' 
-                    : 'glass-effect text-white hover:bg-white/20 border-white/30'
+                    ? 'btn-gradient glass-button' 
+                    : 'glass-button text-white border-white/30'
                 } transition-all duration-300`}
               >
                 <section.icon className="mr-2 h-4 w-4" />

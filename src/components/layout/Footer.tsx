@@ -43,30 +43,30 @@ export function Footer() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="space-y-2"
+              className="space-y-3"
             >
               <li>
-                <Link href="/" className="text-white/70 hover:text-white transition-colors">
+                <Link href="/" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/languages" className="text-white/70 hover:text-white transition-colors">
+                <Link href="/languages" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
                   Languages
                 </Link>
               </li>
               <li>
-                <Link href="/settings" className="text-white/70 hover:text-white transition-colors">
+                <Link href="/settings" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
                   Settings
                 </Link>
               </li>
               <li>
-                <Link href="/live" className="text-white/70 hover:text-white transition-colors">
+                <Link href="/live" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
                   Live Reading
                 </Link>
               </li>
               <li>
-                <Link href="/documentation" className="text-white/70 hover:text-white transition-colors">
+                <Link href="/documentation" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
                   Documentation
                 </Link>
               </li>
@@ -99,7 +99,7 @@ export function Footer() {
                   href={href}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                  className="p-2 rounded-lg glass-button"
                 >
                   <Icon className="h-5 w-5 text-white" />
                 </motion.a>

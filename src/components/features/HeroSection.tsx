@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { Play, Download, ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Link from 'next/link';
 
 export function HeroSection() {
@@ -83,10 +84,10 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           style={{ opacity: 1, transform: 'translateY(0px)' }}
         >
-          <Link href="/documentation">
+          <Link href="/documentation" className="inline-block">
             <Button 
               size="lg" 
-              className="btn-gradient text-white px-8 py-4 text-lg font-semibold group hover:scale-105 transition-all duration-300"
+              className="glass-button btn-gradient text-white px-8 py-4 text-lg font-semibold group hover:scale-105 transition-all duration-300 border-0"
             >
               <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               Get Started
@@ -94,11 +95,11 @@ export function HeroSection() {
             </Button>
           </Link>
           
-          <Link href="/languages">
+          <Link href="/languages" className="inline-block">
             <Button 
               variant="outline" 
-              size="lg"
-              className="glass-effect text-white hover:bg-white/20 px-8 py-4 text-lg border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-105"
+              size="lg" 
+              className="glass-button border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-medium hover:scale-105 transition-all duration-300"
             >
               <Download className="mr-2 h-5 w-5" />
               Download Languages
