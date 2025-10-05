@@ -17,7 +17,6 @@ export function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const scrollDirection = scrollPosition > lastScrollY ? 'down' : 'up';
       
       setIsScrolled(scrollPosition > 20);
       
@@ -25,41 +24,12 @@ export function Navigation() {
       const isDesktop = window.innerWidth >= 768;
       
       if (isDesktop) {
-        // Collapse navbar when scrolling down past 100px
-        if (scrollPosition > 100 && scrollDirection === 'down') {
-          setIsCollapsed(true);
-          setNavOpacity(0);
-          setNavScale(0.8);
-          setIsMobileMenuOpen(false);
-          setShowBorder(false);
-        } 
-        // Start expanding immediately when scrolling up
-        else if (scrollDirection === 'up' && scrollPosition > 20) {
-          const maxScroll = 100;
-          const currentProgress = Math.max(0, Math.min(1, (maxScroll - scrollPosition) / maxScroll));
-          
-          setNavOpacity(currentProgress);
-          setNavScale(0.8 + (0.2 * currentProgress));
-          
-          if (scrollPosition < 50 || currentProgress > 0.8) {
-            setIsCollapsed(false);
-            setNavOpacity(1);
-            setNavScale(1);
-            setShowBorder(scrollPosition > 50);
-          }
-        }
-        // Ensure fully expanded when at top
-        else if (scrollPosition < 20) {
-          setIsCollapsed(false);
-          setNavOpacity(1);
-          setNavScale(1);
-          setShowBorder(false);
-        }
+        // Always show hamburger on desktop
+        setIsCollapsed(true);
+        setShowBorder(scrollPosition > 20);
       } else {
         // On mobile, keep navbar simple
         setIsCollapsed(false);
-        setNavOpacity(1);
-        setNavScale(1);
         setShowBorder(scrollPosition > 20);
       }
       
@@ -108,14 +78,11 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
+        className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
           isScrolled 
             ? 'glass-nav shadow-2xl shadow-black/50' 
             : 'bg-transparent'
         }`}
-        style={{
-          borderBottom: showBorder ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
-        }}
       >
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
@@ -131,35 +98,38 @@ export function Navigation() {
               Liphera
             </motion.div>
 
-            {/* Desktop Navigation with progressive expansion */}
-            <motion.div 
-              className="hidden md:flex items-center space-x-6 lg:space-x-8"
-              animate={{ 
-                opacity: isCollapsed ? navOpacity : 1,
-                x: isCollapsed ? (navOpacity === 0 ? 50 : 50 * (1 - navOpacity)) : 0,
-                scale: isCollapsed ? navScale : (isScrolled ? 1.02 : 1)
-              }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              style={{ pointerEvents: (isCollapsed && navOpacity < 0.5) ? 'none' : 'auto' }}
-            >
-              <NavLink href="/" icon={Home}>Home</NavLink>
-              <NavLink href="/languages" icon={Download}>Languages</NavLink>
-              <NavLink href="/settings" icon={Settings}>Settings</NavLink>
-              <NavLink href="/live" icon={Play}>Live Reading</NavLink>
-            </motion.div>
-
-            {/* Collapsed Menu Button with progressive fade */}
-            <motion.div
-              className={`hidden md:flex items-center justify-center w-10 h-10 rounded-lg glass-button transition-all duration-300 touch-target`}
-              animate={{ 
-                opacity: isCollapsed ? (1 - navOpacity) : 0,
-                scale: isCollapsed ? (0.8 + 0.2 * (1 - navOpacity)) : 0
-              }}
-              transition={{ duration: 0.3 }}
-              style={{ pointerEvents: isCollapsed && navOpacity < 0.5 ? 'auto' : 'none' }}
-            >
-              <Menu className="h-5 w-5 text-white" />
-            </motion.div>
+            {/* Desktop Navigation - smooth transition between links and hamburger */}
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+              <AnimatePresence mode="wait">
+                {!isCollapsed ? (
+                  <motion.div
+                    key="nav-links"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex items-center space-x-6 lg:space-x-8"
+                  >
+                    <NavLink href="/" icon={Home}>Home</NavLink>
+                    <NavLink href="/languages" icon={Download}>Languages</NavLink>
+                    <NavLink href="/settings" icon={Settings}>Settings</NavLink>
+                    <NavLink href="/live" icon={Play}>Live Reading</NavLink>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="hamburger"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex items-center justify-center w-10 h-10 rounded-lg glass-button transition-all duration-300 touch-target cursor-pointer"
+                    onClick={() => setIsCollapsed(false)}
+                  >
+                    <Menu className="h-5 w-5 text-white" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* Mobile Menu Button with enhanced styling */}
             <motion.button
@@ -209,7 +179,7 @@ export function Navigation() {
                   Live Reading
                 </MobileNavLink>
               </div>
-              <div className="mt-8 pt-8 border-t border-white/10">
+              <div className="mt-8 pt-8">
                 <p className="text-sm text-gray-400 text-center">
                   Liphera v1.0
                 </p>
@@ -243,7 +213,6 @@ function NavLink({ href, children, icon: Icon }: NavLinkProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
         <Icon className="h-4 w-4 group-hover:scale-110 transition-transform duration-150 relative z-10" />
         <span className="font-medium relative z-10 text-sm lg:text-base">{children}</span>
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400/0 via-blue-400/60 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
       </motion.div>
     </Link>
   );
@@ -263,7 +232,6 @@ function MobileNavLink({ href, children, icon: Icon, onClick }: NavLinkProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
         <Icon size={24} className="group-hover:scale-110 transition-transform duration-150 relative z-10 flex-shrink-0" />
         <span className="relative z-10 text-lg font-medium">{children}</span>
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400/0 via-blue-400/60 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
       </motion.div>
     </Link>
   );

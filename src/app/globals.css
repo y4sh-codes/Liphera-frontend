@@ -134,7 +134,6 @@ body {
   max-width: 24rem;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(24px);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 50;
 }
 
@@ -308,9 +307,9 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
 
 .text-gradient {
@@ -995,18 +994,10 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(99, 102, 241, 0.3) 90deg,
-    rgba(79, 70, 229, 0.4) 180deg,
-    rgba(255, 119, 198, 0.3) 270deg,
-    transparent 360deg
-  );
+  background: transparent;
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.4s ease;
-  animation: magic-border 4s linear infinite;
 }
 
 .magic-card:hover::before {
@@ -1145,20 +1136,228 @@ p {
   100% { left: 100%; }
 }
 
-/* Scrollbar styling */
+/* Hide all scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
-  border-radius: 4px;
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #4338ca, #5b21b6);
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+}
+
+/* =============================================== */
+/* SMART PERFORMANCE OPTIMIZATIONS */
+/* =============================================== */
+
+/* Industry-standard 120+ FPS performance optimizations */
+.performance-critical {
+  contain: layout style paint;
+  content-visibility: auto;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+}
+
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+  
+/* Apply smart GPU acceleration only to animated elements */
+[class*="animate-"],
+.glass-effect,
+.glass-card,
+.btn-gradient,
+.floating-icon,
+.shimmer-effect {
+  /* GPU acceleration for smooth animations */
+  transform: translateZ(0);
+  
+  /* Optimize for animations */
+  will-change: transform, opacity;
+  
+  /* Prevent layout shifts during animations */
+  backface-visibility: hidden;
+  
+  /* Optimize animation performance */
+  animation-fill-mode: both;
+  
+  /* Use optimized timing functions */
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized blur effects for performance */
+.blur-sm, .blur-md, .blur-lg, .blur-xl, .blur-2xl, .blur-3xl {
+  transform: translateZ(0); /* Simple GPU acceleration for blur effects */
+}
+
+/* Optimized backdrop filters */
+.backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-lg {
+  transform: translateZ(0); /* Simple GPU acceleration for backdrop filters */
+}
+
+/* SVG optimization for neural network graphics */
+svg {
+  /* GPU acceleration for SVG */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* Optimize SVG rendering */
+  shape-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed;
+  image-rendering: optimizeSpeed;
+  
+  /* Optimize repainting */
+  contain: layout style paint;
+  
+  /* Enable hardware acceleration for animations */
+  will-change: transform;
+}
+
+/* Optimize CSS animations for maximum smoothness */
+@keyframes float-gentle {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) translateZ(0); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(2deg) translateZ(0); 
+  }
+}
+
+@keyframes shimmer {
+  0% { 
+    left: -100%; 
+    transform: translateZ(0); 
+  }
+  100% { 
+    left: 100%; 
+    transform: translateZ(0); 
+  }
+}
+
+@keyframes aurora-dance {
+  0%, 100% { 
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg); 
+    opacity: 0.3; 
+  }
+  50% { 
+    transform: translate3d(20px, -20px, 0) scale(1.1) rotate(5deg); 
+    opacity: 0.7; 
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); 
+    transform: translateZ(0); 
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(79, 70, 229, 0.6); 
+    transform: translateZ(0); 
+  }
+}
+
+/* Ultra-smooth 120+ FPS scroll optimization */
+html {
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Industry-standard animation performance */
+.animation-container {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+/* Particle system optimization */
+.particle-system {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  contain: strict;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+/* Ultra-optimized blur effects */
+.optimized-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translate3d(0, 0, 0);
+  will-change: backdrop-filter;
+  contain: layout style;
+}
+
+/* 120+ FPS display optimizations */
+@media (min-resolution: 120dpi) {
+  .high-refresh-rate {
+    animation-duration: calc(var(--animation-duration, 1s) * 0.8);
+    transition-duration: calc(var(--transition-duration, 0.3s) * 0.8);
+  }
+}
+
+/* GPU layer optimization */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Optimize touch interactions */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Reduce animation complexity slightly for battery preservation */
+  [class*="animate-"] {
+    animation-duration: calc(var(--animation-duration, 1s) * 1.2);
+  }
+}
+
+/* Prefers-reduced-motion compliance while maintaining performance */
+@media (prefers-reduced-motion: reduce) {
+  /* Respect accessibility preferences */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Maintain GPU acceleration even with reduced motion */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 }

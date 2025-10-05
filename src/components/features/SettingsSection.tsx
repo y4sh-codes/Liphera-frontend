@@ -4,6 +4,21 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Industry-standard GSAP configuration for 120+ FPS
+  gsap.config({
+    force3D: true,
+    autoSleep: 30,
+    nullTargetWarn: false
+  });
+  
+  // Ultra-high performance ticker
+  gsap.ticker.fps(120);
+  gsap.ticker.lagSmoothing(0);
+}
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,6 +35,19 @@ import {
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
+  
+  // Ultra-high performance GSAP configuration
+  gsap.config({
+    force3D: true,
+    autoSleep: 60,
+    nullTargetWarn: false,
+  });
+  
+  // Optimize ScrollTrigger for performance
+  ScrollTrigger.config({
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+    ignoreMobileResize: true
+  });
 }
 
 interface DeviceSettings {
@@ -56,12 +84,14 @@ export function SettingsSection() {
 
     const cards = sectionRef.current.querySelectorAll('.settings-card');
     
-    gsap.fromTo(titleRef.current,
+    // Smooth title animation
+    const titleAnim = gsap.fromTo(titleRef.current,
       { y: 50, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 1,
+        force3D: true,
         scrollTrigger: {
           trigger: titleRef.current,
           start: 'top 80%',
@@ -69,19 +99,27 @@ export function SettingsSection() {
       }
     );
 
-    gsap.fromTo(cards,
+    // Smooth cards animation
+    const cardsAnim = gsap.fromTo(cards,
       { y: 100, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.8,
         stagger: 0.1,
+        force3D: true,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 70%',
         }
       }
     );
+    
+    // Simple cleanup
+    return () => {
+      titleAnim?.kill();
+      cardsAnim?.kill();
+    };
   }, []);
 
   const handleSave = () => {

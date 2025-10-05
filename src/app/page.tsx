@@ -16,25 +16,27 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       {/* Aurora Background */}
-      <div className="aurora-bg"></div>
+      <div className="aurora-bg performance-critical"></div>
       
       {/* Neural Network Pattern */}
-      <div className="neural-network"></div>
+      <div className="neural-network performance-critical"></div>
       
       {/* Floating Particles */}
-      <div className="floating-particles">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
+      <div className="floating-particles performance-critical">
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
+        <div className="particle gpu-accelerated"></div>
       </div>
       
-      <AnimatedBackground />
+      <div className="animation-container performance-critical">
+        <AnimatedBackground />
+      </div>
       <Navigation />
       <div className="relative z-10 pt-20">
         <HeroSection />
@@ -49,7 +51,7 @@ export default function Home() {
               className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight glow-text relative"
             >
               <span>Get Started</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl opacity-50 -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl opacity-50 -z-10 gpu-accelerated"></div>
             </motion.h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -71,7 +73,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-green-500/10 opacity-0 group-hover:opacity-100 transition-all duration-150" />
                     <div className="relative z-10">
                       <div className="relative mb-6">
-                        <div className="absolute inset-0 bg-red-500/20 rounded-full blur-xl group-hover:bg-red-500/40 group-hover:scale-110 transition-all duration-150"></div>
+                        <div className="absolute inset-0 bg-red-500/20 rounded-full blur-xl group-hover:bg-red-500/40 group-hover:scale-110 transition-all duration-150 gpu-accelerated"></div>
                         <motion.div
                           whileHover={{ 
                             rotate: [0, -5, 5, 0],
@@ -126,7 +128,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-all duration-150"></div>
                     <div className="relative z-10">
                       <div className="relative mb-6">
-                        <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 group-hover:scale-110 transition-all duration-150"></div>
+                        <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 group-hover:scale-110 transition-all duration-150 gpu-accelerated"></div>
                         <motion.div
                           whileHover={{ 
                             rotate: [0, -10, 10, 0],
@@ -173,7 +175,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-all duration-150"></div>
                     <div className="relative z-10">
                       <div className="relative mb-6">
-                        <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl group-hover:bg-purple-500/40 group-hover:scale-110 transition-all duration-150"></div>
+                        <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl group-hover:bg-purple-500/40 group-hover:scale-110 transition-all duration-150 gpu-accelerated"></div>
                         <motion.div
                           whileHover={{ 
                             rotate: [0, -10, 10, 0],
@@ -215,7 +217,7 @@ export default function Home() {
               className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight glow-text relative"
             >
               <span>Key Features</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-blue-500/20 to-green-500/20 blur-xl opacity-50 -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-blue-500/20 to-green-500/20 blur-xl opacity-50 -z-10 gpu-accelerated"></div>
             </motion.h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -234,7 +236,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="relative z-10">
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 group-hover:scale-110 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/40 group-hover:scale-110 transition-all duration-300 gpu-accelerated"></div>
                     <motion.div
                       whileHover={{ 
                         rotate: [0, -10, 10, 0],
@@ -269,7 +271,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-green-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="relative z-10">
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/40 group-hover:scale-110 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/40 group-hover:scale-110 transition-all duration-300 gpu-accelerated"></div>
                     <motion.div
                       whileHover={{ 
                         rotate: [0, -10, 10, 0],
@@ -304,7 +306,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-yellow-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="relative z-10">
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-yellow-500/20 rounded-full blur-xl group-hover:bg-yellow-500/40 group-hover:scale-110 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-yellow-500/20 rounded-full blur-xl group-hover:bg-yellow-500/40 group-hover:scale-110 transition-all duration-300 gpu-accelerated"></div>
                     <motion.div
                       whileHover={{ 
                         rotate: [0, -10, 10, 0],

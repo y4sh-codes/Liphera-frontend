@@ -1,16 +1,45 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+
+// Register ScrollTrigger plugin
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Industry-standard GSAP configuration for 120+ FPS
+  gsap.config({
+    force3D: true,
+    autoSleep: 30,
+    nullTargetWarn: false
+  });
+  
+  // Ultra-high performance ticker
+  gsap.ticker.fps(120);
+  gsap.ticker.lagSmoothing(0);
+}
 import { Download, CheckCircle, Clock, Globe } from 'lucide-react';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
+  
+  // Ultra-high performance GSAP configuration
+  gsap.config({
+    force3D: true,
+    autoSleep: 60,
+    nullTargetWarn: false,
+  });
+  
+  // Optimize ScrollTrigger for performance
+  ScrollTrigger.config({
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+    ignoreMobileResize: true
+  });
 }
 
 interface Language {
@@ -103,33 +132,59 @@ export function LanguageSection() {
     if (!sectionRef.current || !titleRef.current) return;
 
     const cards = sectionRef.current.querySelectorAll('.language-card');
+    const animations: gsap.core.Tween[] = [];
     
-    gsap.fromTo(titleRef.current, 
+    // Ultra-optimized title animation
+    const titleAnim = gsap.fromTo(titleRef.current, 
       { y: 50, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 1,
+        force3D: true,
         scrollTrigger: {
           trigger: titleRef.current,
           start: 'top 80%',
+          toggleActions: 'play none none reverse'
         }
       }
     );
 
-    gsap.fromTo(cards,
+    // Ultra-optimized cards animation
+    const cardsAnim = gsap.fromTo(cards,
       { y: 100, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.8,
-        stagger: 0.1,
+        stagger: {
+          amount: 0.1,
+          ease: 'power2.out'
+        },
+        force3D: true,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 70%',
+          toggleActions: 'play none none reverse'
         }
       }
     );
+    
+    animations.push(titleAnim, cardsAnim);
+    
+    // Comprehensive cleanup
+    return () => {
+      animations.forEach(anim => {
+        if (anim && anim.kill) {
+          anim.kill();
+        }
+      });
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.animation === titleAnim || trigger.animation === cardsAnim) {
+          trigger.kill();
+        }
+      });
+    };
   }, []);
 
   const handleDownload = (languageId: string) => {
