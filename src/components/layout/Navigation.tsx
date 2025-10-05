@@ -141,17 +141,20 @@ export function Navigation() {
         {/* Mobile Menu (for actual mobile devices only) */}
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 py-4 border-t border-white/10 glass-morphism rounded-lg mx-4"
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="md:hidden mt-4 py-6 border-t border-white/10 glass-card rounded-lg mx-4 relative overflow-hidden"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-60"></div>
+            <div className="flex flex-col space-y-2 relative z-10">
               <MobileNavLink href="/" icon={Home}>Home</MobileNavLink>
               <MobileNavLink href="/languages" icon={Download}>Languages</MobileNavLink>
               <MobileNavLink href="/settings" icon={Settings}>Settings</MobileNavLink>
               <MobileNavLink href="/live" icon={Play}>Live Reading</MobileNavLink>
             </div>
+            <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-400/0 via-blue-400/40 to-purple-400/0"></div>
           </motion.div>
         )}
       </div>
@@ -169,11 +172,17 @@ function NavLink({ href, children, icon: Icon }: NavLinkProps) {
   return (
     <Link href={href}>
       <motion.div
-        whileHover={{ y: -2, scale: 1.05 }}
-        className="flex items-center space-x-2 text-white/80 hover:text-white transition-all duration-300 px-3 py-2 rounded-lg glass-button group cursor-pointer"
+        whileHover={{ 
+          y: -4, 
+          scale: 1.05,
+          transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+        }}
+        className="flex items-center space-x-2 text-white/80 hover:text-white transition-all duration-200 px-3 py-2 rounded-lg glass-button-nav group cursor-pointer relative overflow-hidden"
       >
-        <Icon className="h-4 w-4 group-hover:scale-110 transition-transform" />
-        <span className="font-medium">{children}</span>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        <Icon className="h-4 w-4 group-hover:scale-110 transition-transform duration-150 relative z-10" />
+        <span className="font-medium relative z-10">{children}</span>
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400/0 via-blue-400/60 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
       </motion.div>
     </Link>
   );
@@ -183,11 +192,17 @@ function MobileNavLink({ href, children, icon: Icon }: NavLinkProps) {
   return (
     <Link href={href}>
       <motion.div
-        whileHover={{ x: 5 }}
-        className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors cursor-pointer px-4 py-2 rounded-lg hover:bg-white/10"
+        whileHover={{ 
+          x: 8, 
+          scale: 1.02,
+          transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+        }}
+        className="flex items-center space-x-3 text-white/80 hover:text-white transition-all duration-200 cursor-pointer px-4 py-3 rounded-lg glass-button-nav group relative overflow-hidden"
       >
-        <Icon size={20} />
-        <span>{children}</span>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        <Icon size={20} className="group-hover:scale-110 transition-transform duration-150 relative z-10" />
+        <span className="relative z-10">{children}</span>
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400/0 via-blue-400/60 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
       </motion.div>
     </Link>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Heart, Github, Twitter, Linkedin } from 'lucide-react';
+import { Heart, Github, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
@@ -43,32 +43,82 @@ export function Footer() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="space-y-3"
+              className="space-y-2"
             >
               <li>
-                <Link href="/" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
-                  Home
-                </Link>
+                <motion.div
+                  whileHover={{ 
+                    x: 4, 
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+                  }}
+                >
+                  <Link href="/" className="text-white/70 hover:text-white transition-all duration-200 px-3 py-2 rounded-lg glass-button-footer block group relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10">Home</span>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400/0 via-blue-400/50 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  </Link>
+                </motion.div>
               </li>
               <li>
-                <Link href="/languages" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
-                  Languages
-                </Link>
+                <motion.div
+                  whileHover={{ 
+                    x: 4, 
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+                  }}
+                >
+                  <Link href="/languages" className="text-white/70 hover:text-white transition-all duration-200 px-3 py-2 rounded-lg glass-button-footer block group relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10">Languages</span>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400/0 via-purple-400/50 to-purple-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  </Link>
+                </motion.div>
               </li>
               <li>
-                <Link href="/settings" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
-                  Settings
-                </Link>
+                <motion.div
+                  whileHover={{ 
+                    x: 4, 
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+                  }}
+                >
+                  <Link href="/settings" className="text-white/70 hover:text-white transition-all duration-200 px-3 py-2 rounded-lg glass-button-footer block group relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10">Settings</span>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400/0 via-green-400/50 to-green-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  </Link>
+                </motion.div>
               </li>
               <li>
-                <Link href="/live" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
-                  Live Reading
-                </Link>
+                <motion.div
+                  whileHover={{ 
+                    x: 4, 
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+                  }}
+                >
+                  <Link href="/live" className="text-white/70 hover:text-white transition-all duration-200 px-3 py-2 rounded-lg glass-button-footer block group relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10">Live Reading</span>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-400/0 via-red-400/50 to-red-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  </Link>
+                </motion.div>
               </li>
               <li>
-                <Link href="/documentation" className="text-white/70 hover:text-white transition-all duration-300 px-2 py-1 rounded hover:bg-white/5 block">
-                  Documentation
-                </Link>
+                <motion.div
+                  whileHover={{ 
+                    x: 4, 
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.15 }
+                  }}
+                >
+                  <Link href="/documentation" className="text-white/70 hover:text-white transition-all duration-200 px-3 py-2 rounded-lg glass-button-footer block group relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10">Documentation</span>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-400/0 via-yellow-400/50 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  </Link>
+                </motion.div>
               </li>
             </motion.ul>
           </div>
@@ -90,13 +140,14 @@ export function Footer() {
               className="flex space-x-4"
             >
               {[
-                { icon: Github, href: '#' },
-                { icon: Twitter, href: '#' },
-                { icon: Linkedin, href: '#' },
+                { icon: Github, href: 'https://github.com/y4sh-codes/Liphera-frontend.git' },
+                { icon: Mail, href: 'https://mail.google.com/mail/?view=cm&fs=1&to=yashrajsingh231105@gmail.com' },
               ].map(({ icon: Icon, href }, index) => (
                 <motion.a
                   key={index}
                   href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-2 rounded-lg glass-button"
@@ -113,16 +164,11 @@ export function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center"
+          className="border-t border-white/10 pt-8 flex justify-center items-center"
         >
-          <p className="text-white/70 mb-4 md:mb-0">
+          <p className="text-white/70">
             © 2025 Liphera. All rights reserved.
           </p>
-          <div className="flex items-center text-white/70">
-            <span>Made with</span>
-            <Heart className="h-4 w-4 mx-1 text-red-400" />
-            <span>for accessibility</span>
-          </div>
         </motion.div>
       </div>
     </footer>
