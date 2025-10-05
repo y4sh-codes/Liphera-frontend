@@ -15,6 +15,25 @@ export default function Home() {
   
   return (
     <main className="relative min-h-screen overflow-x-hidden">
+      {/* Aurora Background */}
+      <div className="aurora-bg"></div>
+      
+      {/* Neural Network Pattern */}
+      <div className="neural-network"></div>
+      
+      {/* Floating Particles */}
+      <div className="floating-particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+      
       <AnimatedBackground />
       <Navigation />
       <div className="relative z-10 pt-20">
@@ -27,9 +46,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight"
+              className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight glow-text relative"
             >
-              Get Started
+              <span>Get Started</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl opacity-50 -z-10"></div>
             </motion.h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -47,7 +67,7 @@ export default function Home() {
                 className="group md:col-span-2"
               >
                 <Link href="/live">
-                  <div className="glass-card p-8 text-center cursor-pointer h-full relative overflow-hidden rounded-2xl">
+                  <div className="crystal-card magic-card p-8 text-center cursor-pointer h-full relative overflow-hidden rounded-2xl holographic">
                     <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-green-500/10 opacity-0 group-hover:opacity-100 transition-all duration-150" />
                     <div className="relative z-10">
                       <div className="relative mb-6">
@@ -58,9 +78,9 @@ export default function Home() {
                             scale: 1.15,
                             transition: { duration: 0.15 }
                           }}
-                          className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-red-500 to-green-600 group-hover:animate-pulse-glow relative z-10"
+                          className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-red-500 to-green-600 group-hover:animate-pulse-glow relative z-10 floating-icon"
                         >
-                          <Play className="h-10 w-10 text-white" />
+                          <Play className="h-10 w-10 text-white floating-icon" />
                         </motion.div>
                       </div>
                       <h3 className="text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-red-100 transition-all duration-100">Start Live Reading</h3>
@@ -102,7 +122,7 @@ export default function Home() {
                 className="group"
               >
                 <Link href="/languages">
-                  <div className="glass-card p-8 text-center cursor-pointer h-full relative overflow-hidden rounded-2xl">
+                  <div className="crystal-card magic-card p-8 text-center cursor-pointer h-full relative overflow-hidden rounded-2xl shimmer-effect">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-all duration-150"></div>
                     <div className="relative z-10">
                       <div className="relative mb-6">
@@ -149,7 +169,7 @@ export default function Home() {
                 className="group"
               >
                 <Link href="/settings">
-                  <div className="glass-card p-8 text-center cursor-pointer h-full relative overflow-hidden rounded-2xl">
+                  <div className="crystal-card magic-card p-8 text-center cursor-pointer h-full relative overflow-hidden rounded-2xl holographic">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-all duration-150"></div>
                     <div className="relative z-10">
                       <div className="relative mb-6">
@@ -192,9 +212,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight"
+              className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight glow-text relative"
             >
-              Key Features
+              <span>Key Features</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 via-blue-500/20 to-green-500/20 blur-xl opacity-50 -z-10"></div>
             </motion.h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -208,7 +229,7 @@ export default function Home() {
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.2 }
                 }}
-                className="glass-card p-8 text-center group cursor-pointer relative overflow-hidden"
+                className="crystal-card magic-card p-8 text-center group cursor-pointer relative overflow-hidden rounded-xl"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="relative z-10">
@@ -220,8 +241,9 @@ export default function Home() {
                         scale: 1.15,
                         transition: { duration: 0.3 }
                       }}
+                      className="floating-icon"
                     >
-                      <Eye className="h-12 w-12 text-blue-400 mx-auto relative z-10 group-hover:text-blue-300 transition-all duration-200" />
+                      <Eye className="h-12 w-12 text-blue-400 mx-auto relative z-10 group-hover:text-blue-300 transition-all duration-200 floating-icon" />
                     </motion.div>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-100 transition-all duration-200">Real-time Processing</h3>
@@ -242,7 +264,7 @@ export default function Home() {
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.2 }
                 }}
-                className="glass-card p-8 text-center group cursor-pointer relative overflow-hidden"
+                className="crystal-card magic-card p-8 text-center group cursor-pointer relative overflow-hidden shimmer-effect rounded-xl"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-green-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="relative z-10">
@@ -254,8 +276,9 @@ export default function Home() {
                         scale: 1.15,
                         transition: { duration: 0.3 }
                       }}
+                      className="floating-icon"
                     >
-                      <Shield className="h-12 w-12 text-green-400 mx-auto relative z-10 group-hover:text-green-300 transition-all duration-200" />
+                      <Shield className="h-12 w-12 text-green-400 mx-auto relative z-10 group-hover:text-green-300 transition-all duration-200 floating-icon" />
                     </motion.div>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-green-100 transition-all duration-200">Privacy First</h3>
@@ -276,7 +299,7 @@ export default function Home() {
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 400, damping: 25, duration: 0.2 }
                 }}
-                className="glass-card p-8 text-center group cursor-pointer relative overflow-hidden"
+                className="crystal-card magic-card p-8 text-center group cursor-pointer relative overflow-hidden holographic rounded-xl"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-yellow-600/10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 <div className="relative z-10">
@@ -288,8 +311,9 @@ export default function Home() {
                         scale: 1.15,
                         transition: { duration: 0.3 }
                       }}
+                      className="floating-icon"
                     >
-                      <Zap className="h-12 w-12 text-yellow-400 mx-auto relative z-10 group-hover:text-yellow-300 transition-all duration-200" />
+                      <Zap className="h-12 w-12 text-yellow-400 mx-auto relative z-10 group-hover:text-yellow-300 transition-all duration-200 floating-icon" />
                     </motion.div>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-yellow-100 transition-all duration-200">High Accuracy</h3>
