@@ -17,14 +17,10 @@ import {
   Clock, 
   Globe, 
   Search,
-  Filter,
   Star,
-  Info,
   ArrowLeft,
   Trash2,
-  RefreshCw,
-  Upload,
-  FileText
+  Upload
 } from 'lucide-react';
 
 if (typeof window !== 'undefined') {
@@ -212,7 +208,7 @@ export default function LanguagesPage() {
     );
   }, [languageList]);
 
-  const handleDownload = (languageId: string) => {
+    const handleDownload = (languageId: string) => {
     setLanguageList(prev => prev.map(lang => 
       lang.id === languageId 
         ? { ...lang, isDownloading: true, downloadProgress: 0 }
@@ -237,7 +233,7 @@ export default function LanguagesPage() {
     setTimeout(() => clearInterval(interval), 2200);
   };
 
-  const handleDelete = (languageId: string) => {
+    const handleDelete = (languageId: string) => {
     setLanguageList(prev => prev.map(lang => 
       lang.id === languageId 
         ? { ...lang, isDownloaded: false, downloadProgress: 0 }
@@ -320,7 +316,7 @@ export default function LanguagesPage() {
             
             <select
               value={filterType}
-              onChange={(e) => setFilterType(e.target.value as any)}
+              onChange={(e) => setFilterType(e.target.value as 'all' | 'standard' | 'premium' | 'experimental')}
               className="glass-effect border-white/30 text-white bg-transparent rounded-md px-3 py-2"
             >
               <option value="all" className="bg-slate-800">All Types</option>
@@ -331,7 +327,7 @@ export default function LanguagesPage() {
 
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
+              onChange={(e) => setSortBy(e.target.value as 'name' | 'size' | 'accuracy')}
               className="glass-effect border-white/30 text-white bg-transparent rounded-md px-3 py-2"
             >
               <option value="name" className="bg-slate-800">Sort by Name</option>

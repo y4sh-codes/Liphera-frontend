@@ -13,25 +13,18 @@ import {
   ArrowLeft, 
   Camera, 
   Mic, 
-  MicOff, 
   Play, 
   Pause, 
   Square, 
-  Download, 
   Copy, 
   Trash2, 
-  Settings, 
   Volume2, 
   VolumeX,
   Eye,
   EyeOff,
   Maximize,
   Minimize,
-  RotateCcw,
   Save,
-  Share,
-  ChevronUp,
-  ChevronDown,
   Circle,
   Zap,
   Activity,
@@ -60,7 +53,7 @@ export default function LiveReadingPage() {
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [cameraEnabled, setCameraEnabled] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState('English');
+  const [currentLanguage] = useState('English (US)');
   const [liveText, setLiveText] = useState<LiveTextData[]>([]);
   const [currentText, setCurrentText] = useState('');
   const [systemStats, setSystemStats] = useState<SystemStats>({
@@ -343,7 +336,7 @@ export default function LiveReadingPage() {
                             animate={{ opacity: 1, y: 0 }}
                             className="glass-effect p-4 rounded-lg"
                           >
-                            <p className="text-white text-lg font-medium">"{currentText}"</p>
+                            <p className="text-white text-lg font-medium">&ldquo;{currentText}&rdquo;</p>
                           </motion.div>
                         </div>
                       )}

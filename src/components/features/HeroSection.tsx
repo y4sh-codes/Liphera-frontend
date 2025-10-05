@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { Play, Download, ArrowRight } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Link from 'next/link';
 
 export function HeroSection() {
@@ -14,11 +13,16 @@ export function HeroSection() {
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Copy ref values at the start of the effect
+    const titleElement = titleRef.current;
+    const subtitleElement = subtitleRef.current;
+    const ctaElement = ctaRef.current;
+    
     // Check if refs are available before proceeding
-    if (!titleRef.current || !subtitleRef.current || !ctaRef.current) return;
+    if (!titleElement || !subtitleElement || !ctaElement) return;
 
     // Reset elements to visible state first
-    gsap.set([titleRef.current, subtitleRef.current, ctaRef.current], {
+    gsap.set([titleElement, subtitleElement, ctaElement], {
       opacity: 1,
       y: 0,
       clearProps: "all"
@@ -26,16 +30,16 @@ export function HeroSection() {
 
     const tl = gsap.timeline();
     
-    tl.fromTo(titleRef.current, 
+    tl.fromTo(titleElement, 
       { y: 100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
     )
-    .fromTo(subtitleRef.current,
+    .fromTo(subtitleElement,
       { y: 50, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' },
       '-=0.5'
     )
-    .fromTo(ctaRef.current,
+    .fromTo(ctaElement,
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' },
       '-=0.3'
@@ -47,7 +51,7 @@ export function HeroSection() {
       tl.kill();
       
       // Only set properties if elements still exist
-      const elements = [titleRef.current, subtitleRef.current, ctaRef.current].filter(Boolean);
+      const elements = [titleElement, subtitleElement, ctaElement].filter(Boolean);
       if (elements.length > 0) {
         gsap.set(elements, {
           opacity: 1,

@@ -16,17 +16,12 @@ import {
   Cpu, 
   Download, 
   Eye, 
-  Mic, 
-  Monitor, 
   Play, 
   Settings, 
   Shield, 
-  Smartphone, 
   Terminal, 
-  Users, 
   Wifi,
   AlertCircle,
-  CheckCircle,
   Info,
   Zap,
   Database,
@@ -630,7 +625,7 @@ function FAQSection() {
 }
 
 // Helper Components
-function FeatureItem({ icon: Icon, title, description }: { icon: any, title: string, description: string }) {
+function FeatureItem({ icon: Icon, title, description }: { icon: React.ComponentType<{ className?: string }>, title: string, description: string }) {
   return (
     <div className="flex items-start space-x-3">
       <Icon className="h-5 w-5 text-blue-400 mt-0.5" />
@@ -653,7 +648,7 @@ function CodeBlock({ title, code }: { title: string, code: string }) {
   );
 }
 
-function ConfigSection({ title, icon: Icon, items }: { title: string, icon: any, items: string[] }) {
+function ConfigSection({ title, icon: Icon, items }: { title: string, icon: React.ComponentType<{ className?: string }>, items: string[] }) {
   return (
     <div>
       <h4 className="text-white font-semibold mb-3 flex items-center">

@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { CircuitPattern, DataFlowPattern, HexagonalPattern, AIVisualization, DigitalRain } from '@/components/visuals/TechPatterns';
+// Unused components available for future use:
+// import { CircuitPattern, DataFlowPattern, HexagonalPattern } from '@/components/visuals/TechPatterns';
+// import { AIVisualization, DigitalRain } from '@/components/visuals/TechPatterns';
 
 export function AnimatedBackground() {
   const containerRef = useRef<HTMLDivElement>(null);

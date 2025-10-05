@@ -310,7 +310,7 @@ export default function SettingsPage() {
 }
 
 // Settings Components
-function NetworkSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: Function }) {
+function NetworkSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: (settings: DeviceSettings) => void }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <motion.div className="settings-card">
@@ -385,7 +385,7 @@ function NetworkSettings({ settings, setSettings }: { settings: DeviceSettings; 
   );
 }
 
-function CameraSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: Function }) {
+function CameraSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: (settings: DeviceSettings) => void }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <motion.div className="settings-card">
@@ -462,7 +462,7 @@ function CameraSettings({ settings, setSettings }: { settings: DeviceSettings; s
   );
 }
 
-function ProcessingSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: Function }) {
+function ProcessingSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: (settings: DeviceSettings) => void }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <motion.div className="settings-card">
@@ -542,7 +542,7 @@ function ProcessingSettings({ settings, setSettings }: { settings: DeviceSetting
   );
 }
 
-function OutputSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: Function }) {
+function OutputSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: (settings: DeviceSettings) => void }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <motion.div className="settings-card">
@@ -622,7 +622,7 @@ function OutputSettings({ settings, setSettings }: { settings: DeviceSettings; s
   );
 }
 
-function SystemSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: Function }) {
+function SystemSettings({ settings, setSettings }: { settings: DeviceSettings; setSettings: (settings: DeviceSettings) => void }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <motion.div className="settings-card">
