@@ -104,11 +104,11 @@ export function SettingsSection() {
   };
 
   return (
-    <section id="settings" ref={sectionRef} className="py-20 relative">
-      <div className="container mx-auto px-6">
+    <section id="settings" ref={sectionRef} className="hero-mobile py-16 sm:py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.h2
           ref={titleRef}
-          className="text-4xl md:text-6xl font-bold text-center text-gradient-purple mb-4"
+          className="text-responsive-hero font-bold text-center text-gradient-purple mb-4"
         >
           Device Settings
         </motion.h2>
@@ -117,7 +117,7 @@ export function SettingsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto"
+          className="text-responsive-subtitle text-gray-300 text-center mb-12 sm:mb-16 max-w-3xl mx-auto"
         >
           Configure your Raspberry Pi device for optimal lip-reading performance. 
           Adjust settings to match your environment and requirements.
@@ -127,21 +127,21 @@ export function SettingsSection() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
-          <Card className="glass-card glow-blue">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
+          <Card className="glass-card glow-blue card-responsive">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
                 <div className="flex items-center space-x-3">
                   <div className={`w-3 h-3 rounded-full ${isConnected ? 'bg-green-400 animate-pulse-glow' : 'bg-red-400'}`} />
-                  <span className="text-white font-medium">
+                  <span className="text-white font-medium text-sm sm:text-base">
                     {isConnected ? 'Connected to Raspberry Pi' : 'Disconnected'}
                   </span>
                 </div>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="glass-effect text-white hover:bg-white/20 border-white/30"
+                  className="glass-effect text-white hover:bg-white/20 border-white/30 touch-target text-sm"
                   onClick={() => setIsConnected(!isConnected)}
                 >
                   <Power className="mr-2 h-4 w-4" />
@@ -152,23 +152,23 @@ export function SettingsSection() {
           </Card>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Network Settings */}
           <motion.div className="settings-card">
-            <Card className="h-full glass-card hover:glow-blue transition-all duration-300">
+            <Card className="h-full glass-card hover:glow-blue transition-all duration-300 card-responsive motion-safe-only hover-none">
               <CardHeader>
-                <CardTitle className="text-white flex items-center">
+                <CardTitle className="text-white flex items-center text-lg sm:text-xl">
                   <Wifi className="mr-2 h-5 w-5 text-blue-400" />
                   Network Configuration
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-responsive-sm">
                 <div>
                   <label className="text-gray-300 text-sm mb-2 block">Device Name</label>
                   <Input
                     value={settings.deviceName}
                     onChange={(e) => setSettings({...settings, deviceName: e.target.value})}
-                    className="glass-effect border-white/30 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400"
+                    className="glass-effect border-white/30 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400 touch-target"
                   />
                 </div>
                 <div>
@@ -176,7 +176,7 @@ export function SettingsSection() {
                   <Input
                     value={settings.ipAddress}
                     onChange={(e) => setSettings({...settings, ipAddress: e.target.value})}
-                    className="glass-effect border-white/30 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400"
+                    className="glass-effect border-white/30 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400 touch-target"
                   />
                 </div>
                 <div>
@@ -184,7 +184,7 @@ export function SettingsSection() {
                   <Input
                     value={settings.port}
                     onChange={(e) => setSettings({...settings, port: e.target.value})}
-                    className="glass-effect border-white/30 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400"
+                    className="glass-effect border-white/30 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400 touch-target"
                   />
                 </div>
               </CardContent>
@@ -193,14 +193,14 @@ export function SettingsSection() {
 
           {/* Camera Settings */}
           <motion.div className="settings-card">
-            <Card className="h-full bg-white/10 backdrop-blur-sm border-white/20">
+            <Card className="h-full glass-card hover:glow-blue transition-all duration-300 card-responsive motion-safe-only hover-none">
               <CardHeader>
-                <CardTitle className="text-white flex items-center">
+                <CardTitle className="text-white flex items-center text-lg sm:text-xl">
                   <Camera className="mr-2 h-5 w-5 text-green-400" />
                   Camera Configuration
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-responsive-sm">
                 <div>
                   <label className="text-white/80 text-sm mb-2 block">Resolution</label>
                   <select

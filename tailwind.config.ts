@@ -11,10 +11,22 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
         "2xl": "1400px",
       },
+    },
+    screens: {
+      'xs': '475px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
     },
     extend: {
       fontFamily: {
@@ -23,6 +35,11 @@ const config: Config = {
         'sf-display': ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
         'inter': ['var(--font-inter)', 'Inter', 'sans-serif'],
         'mono': ['var(--font-jetbrains-mono)', 'JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
       },
       colors: {
         border: "hsl(var(--border))",
@@ -93,6 +110,10 @@ const config: Config = {
           "0%, 100%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.3)" },
           "50%": { boxShadow: "0 0 40px rgba(59, 130, 246, 0.6)" },
         },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -102,6 +123,10 @@ const config: Config = {
         "scale-in": "scale-in 0.5s ease-out",
         "float": "float 3s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+      },
+      fontSize: {
+        'xxs': '0.625rem',
       },
     },
   },

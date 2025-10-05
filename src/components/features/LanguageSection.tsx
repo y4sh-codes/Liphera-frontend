@@ -159,11 +159,11 @@ export function LanguageSection() {
   };
 
   return (
-    <section id="features" ref={sectionRef} className="py-20 relative">
-      <div className="container mx-auto px-6">
+    <section id="features" ref={sectionRef} className="hero-mobile py-16 sm:py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.h2
           ref={titleRef}
-          className="text-4xl md:text-6xl font-bold text-center text-gradient-purple mb-4"
+          className="text-responsive-hero font-bold text-center text-gradient-purple mb-4"
         >
           Language Models
         </motion.h2>
@@ -172,13 +172,13 @@ export function LanguageSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto"
+          className="text-responsive-subtitle text-gray-300 text-center mb-12 sm:mb-16 max-w-3xl mx-auto"
         >
           Download and install language models for accurate lip-reading in multiple languages. 
           Each model is optimized for Raspberry Pi performance.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid-responsive-features gap-4 sm:gap-6">
           {languageList.map((language) => (
             <LanguageCard
               key={language.id}
@@ -223,17 +223,17 @@ function LanguageCard({ language, onDownload }: LanguageCardProps) {
       whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.2 }}
     >
-      <Card className="h-full glass-card hover:glow-blue transition-all duration-300">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-white flex items-center justify-between">
+      <Card className="h-full glass-card hover:glow-blue transition-all duration-300 card-responsive motion-safe-only hover-none">
+        <CardHeader className="pb-3 sm:pb-4">
+          <CardTitle className="text-white flex items-center justify-between text-lg sm:text-xl">
             <span>{language.name}</span>
-            <span className="text-sm text-gray-400 font-normal">{language.code}</span>
+            <span className="text-xs sm:text-sm text-gray-400 font-normal">{language.code}</span>
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div className="text-gray-300">
+        <CardContent className="space-responsive-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
+            <div className="text-gray-300 space-y-1">
               <p>Size: <span className="text-white">{language.size}</span></p>
               <p>Version: <span className="text-white">{language.version}</span></p>
             </div>
@@ -262,7 +262,7 @@ function LanguageCard({ language, onDownload }: LanguageCardProps) {
           <Button
             onClick={onDownload}
             disabled={language.isDownloaded || language.isDownloading}
-            className={`w-full transition-all duration-300 hover:scale-105 ${
+            className={`w-full transition-all duration-300 hover:scale-105 motion-safe-only hover-none text-sm sm:text-base py-2 sm:py-3 touch-target ${
               language.isDownloaded
                 ? 'bg-green-600 hover:bg-green-700 glow-blue'
                 : language.isDownloading
