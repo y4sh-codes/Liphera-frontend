@@ -63,7 +63,7 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto px-6 text-center">
         <h1
           ref={titleRef}
-          className="text-6xl md:text-8xl font-bold mb-6 text-gradient-purple"
+          className="text-6xl md:text-8xl font-bold mb-6 text-white tracking-tight"
           style={{ opacity: 1, transform: 'translateY(0px)' }}
         >
           Liphera
@@ -71,7 +71,7 @@ export function HeroSection() {
         
         <p
           ref={subtitleRef}
-          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed font-light"
           style={{ opacity: 1, transform: 'translateY(0px)' }}
         >
           Revolutionary lip-reading technology powered by AI. Transform silent speech into text 

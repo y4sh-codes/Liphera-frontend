@@ -26,7 +26,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-gradient-purple text-center mb-12"
+              className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight"
             >
               Get Started
             </motion.h2>
@@ -47,11 +47,11 @@ export default function Home() {
                       <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-red-500 to-green-600 mb-6 group-hover:animate-pulse-glow">
                         <Play className="h-10 w-10 text-white" />
                       </div>
-                      <h3 className="text-3xl font-bold text-white mb-4">Start Live Reading</h3>
-                      <p className="text-slate-300 mb-6 text-lg">
+                      <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">Start Live Reading</h3>
+                      <p className="text-gray-200 mb-6 text-lg font-light">
                         Begin real-time lip reading session. See your words appear instantly as you speak with advanced AI processing.
                       </p>
-                      <div className="flex items-center justify-center space-x-4 text-sm text-slate-400 mb-6">
+                      <div className="flex items-center justify-center space-x-4 text-sm text-gray-300 mb-6">
                         <div className="flex items-center space-x-1">
                           <Circle className="h-3 w-3 text-red-400 fill-current animate-pulse" />
                           <span>Live</span>
@@ -84,11 +84,11 @@ export default function Home() {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mb-6 group-hover:animate-pulse-glow">
                       <Languages className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">Language Models</h3>
-                    <p className="text-slate-300 mb-6">
+                    <h3 className="text-2xl font-semibold text-white mb-4 tracking-tight">Language Models</h3>
+                    <p className="text-gray-200 mb-6 font-light">
                       Browse, download, and manage lip-reading models for different languages. Support for 50+ languages with high accuracy AI models.
                     </p>
-                    <div className="flex items-center justify-center space-x-2 text-sm text-slate-400">
+                    <div className="flex items-center justify-center space-x-2 text-sm text-gray-300">
                       <Download className="h-4 w-4" />
                       <span>Download & Install</span>
                     </div>
@@ -112,11 +112,11 @@ export default function Home() {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 mb-6 group-hover:animate-pulse-glow">
                       <Settings className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">Device Settings</h3>
-                    <p className="text-slate-300 mb-6">
+                    <h3 className="text-2xl font-semibold text-white mb-4 tracking-tight">Device Settings</h3>
+                    <p className="text-gray-200 mb-6 font-light">
                       Configure your Raspberry Pi device, camera settings, processing options, and optimize performance for your environment.
                     </p>
-                    <div className="flex items-center justify-center space-x-2 text-sm text-slate-400">
+                    <div className="flex items-center justify-center space-x-2 text-sm text-gray-300">
                       <Cpu className="h-4 w-4" />
                       <span>Optimize Performance</span>
                     </div>
@@ -137,7 +137,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-gradient-purple text-center mb-12"
+              className="text-3xl md:text-4xl font-bold text-white text-center mb-12 tracking-tight"
             >
               Key Features
             </motion.h2>

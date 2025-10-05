@@ -118,13 +118,8 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Main gradient background with enhanced colors */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900" />
-      
-      {/* Multiple overlay patterns for depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.15),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(99,102,241,0.1),transparent_50%)]" />
+      {/* Solid black background */}
+      <div className="absolute inset-0 bg-black" />
       
       {/* Noise texture overlay for realism */}
       <div 
@@ -134,18 +129,17 @@ export function AnimatedBackground() {
         }}
       />
       
-      {/* Enhanced Tech Patterns */}
-      <div className="absolute inset-0">
-        <CircuitPattern />
-        <HexagonalPattern />
-      </div>
-      
-      {/* Data Flow Patterns */}
-      <DataFlowPattern />
-      <DigitalRain />
-      
-      {/* AI Visualization */}
-      <AIVisualization />
+      {/* Minimal tech grid only */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+        }}
+      />
       
       {/* Tech grid pattern */}
       <div 
