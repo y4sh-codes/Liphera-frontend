@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Download, Settings, Home } from 'lucide-react';
+import { Menu, X, Download, Settings, Home, Play } from 'lucide-react';
 import Link from 'next/link';
 
 export function Navigation() {
@@ -45,6 +45,7 @@ export function Navigation() {
             <NavLink href="/" icon={Home}>Home</NavLink>
             <NavLink href="/languages" icon={Download}>Languages</NavLink>
             <NavLink href="/settings" icon={Settings}>Settings</NavLink>
+            <NavLink href="/live" icon={Play}>Live Reading</NavLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -70,6 +71,7 @@ export function Navigation() {
               <MobileNavLink href="/" icon={Home}>Home</MobileNavLink>
               <MobileNavLink href="/languages" icon={Download}>Languages</MobileNavLink>
               <MobileNavLink href="/settings" icon={Settings}>Settings</MobileNavLink>
+              <MobileNavLink href="/live" icon={Play}>Live Reading</MobileNavLink>
             </div>
           </motion.div>
         )}

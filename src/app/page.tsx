@@ -9,7 +9,7 @@ import { Footer } from '@/components/layout/Footer';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Languages, Settings, Download, Cpu, Eye, Shield, Zap } from 'lucide-react';
+import { Languages, Settings, Download, Cpu, Eye, Shield, Zap, Play, Circle, ArrowRight } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -32,6 +32,45 @@ export default function Home() {
             </motion.h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Live Reading Card */}
+              <motion.div
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="group md:col-span-2"
+              >
+                <Link href="/live">
+                  <div className="glass-card hover:glow-blue p-8 text-center transition-all duration-500 hover:scale-105 cursor-pointer h-full relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10">
+                      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-red-500 to-green-600 mb-6 group-hover:animate-pulse-glow">
+                        <Play className="h-10 w-10 text-white" />
+                      </div>
+                      <h3 className="text-3xl font-bold text-white mb-4">Start Live Reading</h3>
+                      <p className="text-slate-300 mb-6 text-lg">
+                        Begin real-time lip reading session. See your words appear instantly as you speak with advanced AI processing.
+                      </p>
+                      <div className="flex items-center justify-center space-x-4 text-sm text-slate-400 mb-6">
+                        <div className="flex items-center space-x-1">
+                          <Circle className="h-3 w-3 text-red-400 fill-current animate-pulse" />
+                          <span>Live</span>
+                        </div>
+                        <span>•</span>
+                        <span>Real-time Processing</span>
+                        <span>•</span>
+                        <span>95%+ Accuracy</span>
+                      </div>
+                      <Button className="mt-4 btn-gradient text-xl px-8 py-4 group-hover:scale-105 transition-all duration-300">
+                        <Play className="mr-3 h-6 w-6" />
+                        Start Now
+                        <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+
               {/* Languages Card */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
