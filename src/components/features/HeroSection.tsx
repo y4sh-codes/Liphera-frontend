@@ -63,9 +63,9 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden hero-mobile">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden hero-mobile pb-12 sm:pb-16">
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center max-w-5xl">
         <h1
           ref={titleRef}
           className="text-responsive-hero font-bold mb-4 sm:mb-6 text-white tracking-tight"
@@ -85,7 +85,7 @@ export function HeroSection() {
 
         <div
           ref={ctaRef}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0 mb-16 sm:mb-20"
           style={{ opacity: 1, transform: 'translateY(0px)' }}
         >
           <Link href="/documentation" className="w-full sm:w-auto">
@@ -110,49 +110,11 @@ export function HeroSection() {
             </Button>
           </Link>
         </div>
-
-        {/* Feature highlights */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-          className="mt-12 sm:mt-16 grid-responsive-features gap-6 sm:gap-8 max-w-5xl mx-auto"
-        >
-          <FeatureCard
-            title="Real-time Processing"
-            description="Process lip movements in real-time with minimal latency"
-          />
-          <FeatureCard
-            title="Multi-language Support"
-            description="Support for multiple languages with downloadable models"
-          />
-          <FeatureCard
-            title="Raspberry Pi Optimized"
-            description="Specifically optimized for Raspberry Pi hardware"
-          />
-        </motion.div>
       </div>
 
       {/* Floating Elements */}
       <FloatingElements />
     </section>
-  );
-}
-
-interface FeatureCardProps {
-  title: string;
-  description: string;
-}
-
-function FeatureCard({ title, description }: FeatureCardProps) {
-  return (
-    <motion.div
-      whileHover={{ y: -5, scale: 1.02 }}
-      className="card-responsive glass-card text-center hover:glow-blue transition-all duration-300 motion-safe-only hover-none touch-target"
-    >
-      <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">{title}</h3>
-      <p className="text-sm sm:text-base text-gray-300">{description}</p>
-    </motion.div>
   );
 }
 
