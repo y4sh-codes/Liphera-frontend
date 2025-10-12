@@ -13,6 +13,23 @@ export function AnimatedBackground() {
   // All hooks must be called before any conditional returns
   useEffect(() => {
     setIsMounted(true);
+    
+    // Industry-standard GSAP configuration for 120+ FPS
+    gsap.config({
+      force3D: true,
+      autoSleep: 30,
+      nullTargetWarn: false,
+      units: { rotation: 'rad' }
+    });
+    
+    // Ultra-high performance ticker configuration
+    gsap.ticker.fps(120);
+    gsap.ticker.lagSmoothing(0);
+    
+    // Simple GPU acceleration setup
+    if (document.documentElement) {
+      gsap.set(document.documentElement, { transform: 'translateZ(0)' });
+    }
   }, []);
 
   useEffect(() => {
@@ -20,89 +37,139 @@ export function AnimatedBackground() {
 
     const container = containerRef.current;
     
-    // Create floating particles
+    // Create ultra-high performance particles
     const particleCount = 60;
     const particles: HTMLDivElement[] = [];
+    const animations: (gsap.core.Tween | gsap.core.Timeline)[] = [];
+    
+    // Ultra-efficient DocumentFragment approach
+    const fragment = document.createDocumentFragment();
     
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
-      particle.className = 'absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-500/20 blur-sm';
+      particle.className = 'absolute rounded-full bg-white/10 particle-system';
       
-      const size = Math.random() * 4 + 2;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
+      const size = Math.random() * 4 + 1;
+      particle.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+      `;
       
-      container.appendChild(particle);
+      fragment.appendChild(particle);
       particles.push(particle);
-      
-      // Animate particles
-      gsap.to(particle, {
-        x: `+=${Math.random() * 200 - 100}`,
-        y: `+=${Math.random() * 200 - 100}`,
-        duration: Math.random() * 20 + 10,
-        repeat: -1,
-        yoyo: true,
-        ease: 'none'
-      });
-      
-      gsap.to(particle, {
-        opacity: Math.random() * 0.5 + 0.3,
-        duration: Math.random() * 3 + 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power2.inOut'
-      });
     }
+    
+    // Batch DOM insertion for maximum performance
+    container.appendChild(fragment);
+    
+    // Industry-standard batch animation setup
+    particles.forEach((particle, i) => {
+      const tl = gsap.timeline({ 
+        repeat: -1, 
+        yoyo: true,
+        ease: 'none',
+        force3D: true
+      });
+      
+      tl.to(particle, {
+        y: `+=${Math.random() * 100 + 50}`,
+        x: `+=${Math.random() * 50 - 25}`,
+        duration: Math.random() * 10 + 15,
+        ease: 'none',
+        force3D: true,
+        transformOrigin: 'center center'
+      });
+      
+      animations.push(tl);
+    });
 
-    // Create larger floating orbs
+    // Create ultra-high performance orbs
     const orbCount = 8;
+    const orbFragment = document.createDocumentFragment();
+    const orbs: HTMLDivElement[] = [];
+    
     for (let i = 0; i < orbCount; i++) {
       const orb = document.createElement('div');
-      orb.className = 'absolute rounded-full blur-3xl opacity-20';
+      orb.className = 'absolute rounded-full gpu-layer';
       
-      const size = Math.random() * 300 + 200;
-      orb.style.width = `${size}px`;
-      orb.style.height = `${size}px`;
-      orb.style.left = `${Math.random() * 120 - 10}%`;
-      orb.style.top = `${Math.random() * 120 - 10}%`;
+      const size = Math.random() * 200 + 100;
+      const hue = Math.random() * 360;
       
-      // Random gradient colors
-      const colors = [
-        'from-blue-500/30 to-purple-600/30',
-        'from-purple-500/30 to-pink-500/30',
-        'from-cyan-400/30 to-blue-500/30',
-        'from-indigo-500/30 to-purple-500/30',
-        'from-violet-500/30 to-purple-500/30'
-      ];
+      orb.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        background: radial-gradient(circle, hsla(${hue}, 70%, 60%, 0.1) 0%, transparent 70%);
+        left: ${Math.random() * 120 - 10}%;
+        top: ${Math.random() * 120 - 10}%;
+        filter: blur(1px);
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+      `;
       
-      orb.className += ` bg-gradient-to-br ${colors[Math.floor(Math.random() * colors.length)]}`;
+      orbFragment.appendChild(orb);
+      orbs.push(orb);
+    }
+    
+    // Batch orb insertion
+    container.appendChild(orbFragment);
+    
+    // Industry-standard batch animations for orbs
+    orbs.forEach((orb, i) => {
+      const masterTL = gsap.timeline();
       
-      container.appendChild(orb);
-      
-      // Animate orbs
-      gsap.to(orb, {
-        x: `+=${Math.random() * 400 - 200}`,
-        y: `+=${Math.random() * 400 - 200}`,
+      // Rotation animation
+      masterTL.to(orb, {
         rotation: 360,
-        duration: Math.random() * 30 + 20,
+        duration: Math.random() * 20 + 30,
         repeat: -1,
-        ease: 'none'
-      });
+        ease: 'none',
+        force3D: true,
+        transformOrigin: 'center center'
+      }, 0);
       
-      gsap.to(orb, {
-        scale: Math.random() * 0.5 + 0.8,
-        duration: Math.random() * 8 + 4,
+      // Movement animation
+      masterTL.to(orb, {
+        x: `+=${Math.random() * 200 - 100}`,
+        y: `+=${Math.random() * 200 - 100}`,
+        duration: Math.random() * 15 + 20,
         repeat: -1,
         yoyo: true,
-        ease: 'power2.inOut'
-      });
-    }
+        ease: 'sine.inOut',
+        force3D: true
+      }, 0);
+      
+      animations.push(masterTL);
+    });
 
-    // Cleanup function
+    // Comprehensive cleanup function
     return () => {
-      particles.forEach(particle => particle.remove());
+      // Kill all animations to prevent memory leaks
+      animations.forEach(anim => {
+        if (anim && anim.kill) {
+          anim.kill();
+        }
+      });
+      
+      // Clean up DOM elements
+      particles.forEach(particle => {
+        if (particle.parentNode) {
+          particle.style.willChange = 'auto'; // Reset will-change
+          particle.remove();
+        }
+      });
+      
+      // Clear arrays
+      particles.length = 0;
+      animations.length = 0;
+      
+      // Force garbage collection hint
+      if (container) {
+        container.innerHTML = '';
+      }
     };
   }, [isMounted]);
 
